@@ -1,0 +1,23 @@
+crear Dockerfile
+docker build .
+
+crear el archivo docker-compose.yml
+
+docker-compose build
+
+una ves creado el container
+para crear el proyecto
+docker-compose run sh -c "django-admin.py startproject app ."
+
+docker-compose run app sh -c "python manage.py startapp core"
+
+correr los test para tdd
+docker-compose run app sh -c "python manage.py test"
+
+docker-compose run app sh -c "python manage.py makemigrations core"
+
+
+
+python manage.py wait_for_db &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000
