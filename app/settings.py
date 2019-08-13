@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'app_tw',
     'rest_framework',
     'rest_framework.authtoken',
     'core',
@@ -129,6 +131,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'core.User'
+
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+URL_PREFIX = 'natagua'
+
+STATIC_URL = '/' + URL_PREFIX + '/static/'
+
+LOGIN_URL = 'accounts/login'
+LOGIN_REDIRECT_URL = '/'
+
+URL_PREFIXs = '/'
+API_PREFIX = 'api/'
