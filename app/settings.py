@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'fdfdqm94jd8jdipptq_21vg!i$0nu9t9p4^%3qau=0z_q_2h(j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.103.156.229', 'localhost']
 
 
 # Application definition
@@ -120,16 +120,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-#STATIC_URL = '/static/'
+#STATIC_URL = '/app_tva/static/'
 
 AUTH_USER_MODEL = 'core.User'
 
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-URL_PREFIX = 'natagua'
 
-STATIC_URL = '/' + URL_PREFIX + '/static/'
+
+STATIC_URL = '/static/'
+
 
 LOGIN_URL = 'accounts/login'
 LOGIN_REDIRECT_URL = '/'
@@ -137,10 +138,9 @@ LOGIN_REDIRECT_URL = '/'
 URL_PREFIXs = '/'
 API_PREFIX = 'api/'
 
-
 try:
-    from local_setting import *
+    from core.local_setting import *
 except ImportError:
-    pass
+    print('Error local_setting not found')
 
 

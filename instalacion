@@ -27,7 +27,9 @@
 
     python manage.py createsuperuser
 
+4.- Instal requerimientos del sistema
 
+    pip install -r requirements.txt
 
 
 4.- realizar una copia de local_setting.py, contiene las configuraciones principales del sistema
