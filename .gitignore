@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 
 .idia
+local_setting.py

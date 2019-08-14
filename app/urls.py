@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url, include
-from app_tw.views import index
+from app_tva.views import index
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    url(r'^admin/', admin.site.urls),
+    #url(r'^admin/', admin.site.urls),
     url(r'^admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     url(r'^$', index, name='index'),

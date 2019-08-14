@@ -1,23 +1,42 @@
-crear Dockerfile
-docker build .
+1.- instalar
+    apt-get install python3-venv
+    crear un entorno virtual ejemplo
+    python3 -m venv env_tva
 
-crear el archivo docker-compose.yml
+    activar el entorno virtual
+    source ~/env_tva/bin/activate
 
-docker-compose build
+2.- Instalación de mysql
+    sudo apt-get install python3-dev libmysqlclient-dev
+    wget –c https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
+    sudo dpkg –i mysql-apt-config_0.8.10-1_all.deb
+    sudo apt-get update
+    sudo apt-get install mysql-server
 
-una ves creado el container
-para crear el proyecto
-docker-compose run sh -c "django-admin.py startproject app ."
+3.- crear una base de datos en mysql
 
-docker-compose run app sh -c "python manage.py startapp core"
+    conectar mysql
+    mysql –u root –p
 
-correr los test para tdd
-docker-compose run app sh -c "python manage.py test"
+    create database tva_web;
 
-docker-compose run app sh -c "python manage.py makemigrations core"
+    ejecutar migracion inicial
+    python manage.py migrate
+
+    crear un super usuario
+
+    python manage.py createsuperuser
 
 
 
-python manage.py wait_for_db &&
-             python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000
+
+4.- realizar una copia de local_setting.py, contiene las configuraciones principales del sistema
+
+    sudo cp local_setting.py_sample local_setting.py
+
+    cambiar owner local_setting.py
+
+    sudo chown havas:havas local_setting.py
+
+5.- configurar local_setting.py
+    ingresar las valores coprreposndiente para la connección a base de datos

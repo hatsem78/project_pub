@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'app_tw',
+    'app_tva',
     'rest_framework',
     'rest_framework.authtoken',
     'core',
@@ -83,17 +83,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'HOST': os.environ.get('DB_HOST'),
-#        'NAME': os.environ.get('DB_NAME'),
-#        'USER': os.environ.get('DB_USER'),
-#        'PASSWORD': os.environ.get('DB_PASS'),
-#    }
-#}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -147,3 +136,11 @@ LOGIN_REDIRECT_URL = '/'
 
 URL_PREFIXs = '/'
 API_PREFIX = 'api/'
+
+
+try:
+    from local_setting import *
+except ImportError:
+    pass
+
+
